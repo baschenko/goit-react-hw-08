@@ -1,0 +1,25 @@
+.textBlock {
+  width: 200px;
+}
+
+.text {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.btn {
+  margin-left: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  box-shadow: 1px 1px 5px 5px #d7d7d7;
+  &:hover {
+    background-color: #dfdbdb;
+  }
+  &:active {
+    box-shadow: none;
+  }
+}

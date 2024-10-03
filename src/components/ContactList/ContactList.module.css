@@ -1,0 +1,23 @@
+.list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  border: 1px solid grey;
+  padding: 10px;
+  justify-content: space-between;
+  font-size: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  align-items: center;
+  width: calc((100% - 80px) / 2);
+
+  &:hover {
+    box-shadow: 0 0 5px 5px gray;
+  }
+}
