@@ -11,6 +11,7 @@ export default function LoginForm() {
   const handleSubmit = (values, actions) => {
     console.log(values);
     dispath(logIn(values));
+
     actions.resetForm();
   };
 
