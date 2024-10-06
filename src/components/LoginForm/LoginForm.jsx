@@ -3,15 +3,14 @@ import s from './LoginForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from '../../redux/auth/operations';
 import { selectIsLoading } from '../../redux/auth/selectors';
+import { Button } from '@mui/material';
 
 export default function LoginForm() {
   const dispath = useDispatch();
   const isLoading = useSelector(selectIsLoading);
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
     dispath(logIn(values));
-
     actions.resetForm();
   };
 
@@ -25,16 +24,16 @@ export default function LoginForm() {
     >
       <Form className={s.form} autoComplete="off">
         <label className={s.label}>
-          Email
+          Пошта
           <Field type="email" name="email" />
         </label>
         <label className={s.label}>
-          Password
+          Пароль
           <Field type="password" name="password" />
         </label>
-        <button type="submit" disabled={isLoading}>
-          Log In
-        </button>
+        <Button variant="contained" type="submit" disabled={isLoading}>
+          Увійти
+        </Button>
       </Form>
     </Formik>
   );

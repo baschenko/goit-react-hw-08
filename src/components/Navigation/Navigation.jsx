@@ -8,11 +8,11 @@ export default function Navigation() {
   return (
     <nav>
       <NavLink className={s.link} to="/">
-        Home
+        Головна
       </NavLink>
       {isLoggedIn && (
         <NavLink className={s.link} to="/contacts">
-          Contacts
+          Контакти
         </NavLink>
       )}
     </nav>

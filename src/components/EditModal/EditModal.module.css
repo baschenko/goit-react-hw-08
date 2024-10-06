@@ -13,7 +13,7 @@
   margin-top: 5px;
 
   &:hover {
-    border: 2px solid rgb(25, 118, 210);
+    border: 2px solid blue;
   }
 }
 

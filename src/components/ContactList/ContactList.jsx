@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import Contact from '../Contact/Contact';
-import s from './ContactList.module.css';
 import { selectFilteredContacts } from '../../redux/contacts/slice';
+import { Grid } from '@mui/material';
 
 const ContactList = () => {
   // Викликаємо мемоізований масив в залежності від пошукового запрос або за ім'ям або за номером телефону
@@ -9,13 +9,13 @@ const ContactList = () => {
 
   return (
     <div>
-      <ul className={s.list}>
+      <Grid container spacing={2} columns={16}>
         {filteredContacts.map(({ id, name, number }) => (
-          <li key={id} className={s.item}>
+          <Grid item xs={8} key={id}>
             <Contact name={name} number={number} id={id} />
-          </li>
+          </Grid>
         ))}
-      </ul>
+      </Grid>
     </div>
   );
 };

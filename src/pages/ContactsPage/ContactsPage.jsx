@@ -6,10 +6,15 @@ import { selectContacts } from '../../redux/contacts/selectors';
 import ContactList from '../../components/ContactList/ContactList';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import SearchBox from '../../components/SearchBox/SearchBox';
+import EditModal from '../../components/EditModal/EditModal';
+import ConfirmModal from '../../components/ConfirmModal/ConfirmModal';
+import { selectModal, selectModalEdit } from '../../redux/modal/selectors';
 
 export default function ContactsPages() {
-  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+  const isConfirmModal = useSelector(selectModal);
+  const isEditModal = useSelector(selectModalEdit);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -17,14 +22,16 @@ export default function ContactsPages() {
 
   return (
     <div className={s.wrapper}>
-      <h1 className={s.title}>Phonebook</h1>
+      <h1 className={s.title}>Книга контактів</h1>
       <ContactForm />
       {!contacts.length ? (
-        <p>Додайте перший контакт</p>
+        <p>Додайте Ваш перший контакт</p>
       ) : (
         <>
           <SearchBox />
           <ContactList />
+          {isConfirmModal && <ConfirmModal />}
+          {isEditModal && <EditModal />}
         </>
       )}
     </div>

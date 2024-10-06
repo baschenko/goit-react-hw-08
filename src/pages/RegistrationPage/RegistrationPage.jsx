@@ -4,7 +4,7 @@ import RegistrationForm from '../../components/RegistrationForm/RegistrationForm
 export default function RegistrationPage() {
   return (
     <div>
-      <PageTitle>Register your account</PageTitle>
+      <PageTitle>Зареєструйте ваш новий аккаунт</PageTitle>
       <RegistrationForm />
     </div>
   );

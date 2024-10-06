@@ -2,6 +2,7 @@ import { Formik, Form, Field } from 'formik';
 import s from './RegistrationForm.module.css';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
+import { Button } from '@mui/material';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -22,18 +23,20 @@ export default function RegistrationForm() {
     >
       <Form className={s.form} autoComplete="off">
         <label className={s.label}>
-          Username
+          Ім`я
           <Field type="text" name="name" />
         </label>
         <label className={s.label}>
-          Email
+          Пошта
           <Field type="email" name="email" />
         </label>
         <label className={s.label}>
-          Password
+          Пароль
           <Field type="password" name="password" />
         </label>
-        <button type="submit">Register</button>
+        <Button variant="contained" type="submit">
+          Зареєструватись
+        </Button>
       </Form>
     </Formik>
   );

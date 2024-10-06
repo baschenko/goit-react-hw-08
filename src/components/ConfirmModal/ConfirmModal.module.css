@@ -1,0 +1,8 @@
+.title {
+  margin-bottom: 15px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}

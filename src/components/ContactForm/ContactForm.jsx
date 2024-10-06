@@ -3,6 +3,8 @@ import s from './ContactForm.module.css';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
+import { IconButton, Paper, Tooltip } from '@mui/material';
+import { MdAddCircle } from 'react-icons/md';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -30,7 +32,6 @@ const ContactForm = () => {
 
   const handleSubmit = (date, actions) => {
     dispatch(addContact(date));
-
     actions.resetForm();
   };
 
@@ -40,21 +41,38 @@ const ContactForm = () => {
       initialValues={initialValues}
       onSubmit={handleSubmit}
     >
-      <Form className={s.form}>
-        <label className={s.label}>
-          <span>Name</span>
-          <Field name="name" className={s.input} />
-          <ErrorMessage name="name" component="span" className={s.error} />
-        </label>
-        <label className={s.label}>
-          <span>Number</span>
-          <Field name="number" className={s.input} />
-          <ErrorMessage name="number" component="span" className={s.error} />
-        </label>
-        <button type="submit" className={s.btn}>
-          Add contact
-        </button>
-      </Form>
+      <Paper
+        elevation={3}
+        sx={theme => ({
+          p: 2,
+          marginRight: 'auto',
+          maxWidth: 500,
+          flexGrow: 1,
+          backgroundColor: '#fff',
+          ...theme.applyStyles('dark', {
+            backgroundColor: '#1A2027',
+          }),
+        })}
+      >
+        <Form>
+          <label className={s.label}>
+            <span>Ім`я</span>
+            <Field name="name" className={s.input} />
+            <ErrorMessage name="name" component="span" className={s.error} />
+          </label>
+          <label className={s.label}>
+            <span>Номер</span>
+            <Field name="number" className={s.input} />
+            <ErrorMessage name="number" component="span" className={s.error} />
+          </label>
+
+          <Tooltip title="Додати контакт">
+            <IconButton type="submit">
+              <MdAddCircle size={48} color="rgb(25, 118, 210)" />
+            </IconButton>
+          </Tooltip>
+        </Form>
+      </Paper>
     </Formik>
   );
 };

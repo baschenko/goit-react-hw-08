@@ -2,9 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-// axios.defaults.baseURL = 'https://66f083ebf2a8bce81be61304.mockapi.io';
-// axios.defaults.baseURL = 'https://connections-api.goit.global';
-
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
@@ -23,6 +20,24 @@ export const addContact = createAsyncThunk(
     const toastId = toast.loading('Додаємо...');
     try {
       const { data } = await axios.post('/contacts', newContact);
+      toast.success('Успішно додано!', { id: toastId });
+      return data;
+    } catch (error) {
+      toast.error('Упс, помилка! Шось пішло не так!', { id: toastId });
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const editContact = createAsyncThunk(
+  'contacts/editContact',
+  async (newContact, thunkAPI) => {
+    const toastId = toast.loading('Змінюємо...');
+    try {
+      const { data } = await axios.patch(
+        `/contacts/${newContact.id}`,
+        newContact.date
+      );
       toast.success('Успішно додано!', { id: toastId });
       return data;
     } catch (error) {

@@ -14,7 +14,7 @@ const SearchBox = () => {
 
   return (
     <div>
-      <p>Find contacts by name or phone</p>
+      <p>Шукайте контакт за іменем або номером</p>
       <input
         type="text"
         onChange={handleChange}

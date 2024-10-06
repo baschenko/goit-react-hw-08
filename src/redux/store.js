@@ -16,7 +16,7 @@ import storage from 'redux-persist/lib/storage';
 
 import authReducer from './auth/slice';
 
-//vitaly.baschenko@gmail.com
+import modalReducer from './modal/slice';
 
 const persistAuthConfig = {
   key: 'jwt-token',
@@ -31,6 +31,7 @@ export const store = configureStore({
     contacts: contactReducer,
     filters: filterReducer,
     auth: persistedAuthReducer,
+    modal: modalReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
